@@ -19,7 +19,7 @@ config.unix_domains = { { name = "unix" } }
 config.default_gui_startup_args = { "connect", "unix" }
 
 -- tmux
-config.leader = { key = "m", mods = "ALT", timeout_milliseconds = 2000 }
+config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = {
 	{
 		mods = "LEADER",
