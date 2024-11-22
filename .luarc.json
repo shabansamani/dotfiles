@@ -1,0 +1,6 @@
+{
+    "runtime.version": "Lua 5.3",
+    "diagnostics.globals": [
+        "sbar"
+    ]
+}

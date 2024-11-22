@@ -1,0 +1,36 @@
+#!/bin/bash
+
+export BLACK=0xff1E1D26
+export RED=0xff3F2D30
+export GREEN=0xff7B9D86
+export YELLOW=0xffB5AE93
+export BLUE=0xff4F536A
+export MAGENTA=0xffC29BC1
+export CYAN=0xff789F97
+export WHITE=0xffB3B5A4
+export ALTBLACK=0xff2C2530
+export ALTRED=0xff9B6961
+export ALTGREEN=0xffA9C9BF
+export ALTYELLOW=0xffCBC7B2
+export ALTBLUE=0xffafb4db
+export ALTMAGENTA=0xffCCC4D3
+export ALTCYAN=0xff91A8A2
+export ALTWHITE=0xffd0cbcd
+export TRANSPARENT=0x00000000
+export BG0=0xff2c2e34
+export BG1=0xff363944
+export BG2=0xff414550
+export RESEDAGREEN=0xff323415
+export THISTLE=0x22e3c0d3
+export PEACHYELLOW=0xfff2d398
+export EGGPLANT=0xff6d4954
+
+# General bar colors
+export BAR_BORDER_COLOR=$ALTMAGENTA
+export BACKGROUND_2=$ALTBLACK
+export BACKGROUND_1=$BLACK
+export ICON_COLOR=$ALTWHITE
+export LABEL_COLOR=$ALTWHITE
+export POPUP_BACKGROUND_COLOR=$BLACK
+export POPUP_BORDER_COLOR=$WHITE
+export SHADOW_COLOR=$BLACK
