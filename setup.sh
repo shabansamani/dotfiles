@@ -36,7 +36,7 @@ cd "${HOME}/dotfiles" || exit
 # Run VS Code Script
 ./vscode.sh
 
-# Run GNU Stow (& other misc config)
+# Run GNU Stow 
 ./stow.sh
 
 sdks=(
