@@ -29,7 +29,7 @@ config.keys = {
 	{
 		mods = "LEADER",
 		key = "x",
-		action = wezterm.action.CloseCurrentPane({ confirm = true }),
+		action = wezterm.action.CloseCurrentPane({ confirm = false }),
 	},
 	{
 		mods = "LEADER",
@@ -45,6 +45,13 @@ config.keys = {
 		mods = "LEADER",
 		key = "|",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "LEADER",
+		key = "!",
+		action = wezterm.action_callback(function(win, pane)
+			local tab, window = pane:move_to_new_tab()
+		end),
 	},
 	{
 		mods = "LEADER",

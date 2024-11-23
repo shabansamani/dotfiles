@@ -41,14 +41,14 @@ cd "${HOME}/dotfiles" || exit
 
 sdks=(
 	"java"
-	"gradle",
-	"groovy",
-	"jbang",
-	"jetty",
-	"kotlin",
-	"maven",
-	"micronaut",
-	"quarkus",
+	"gradle"
+	"groovy"
+	"jbang"
+	"jetty"
+	"kotlin"
+	"maven"
+	"micronaut"
+	"quarkus"
 	"springboot"
 )
 
@@ -57,13 +57,9 @@ curl -s "https://get.sdkman.io" | zsh
 source "${HOME}/.sdkman/bin/sdkman-init.sh"
 
 # Check if SDKMAN! is installed
-if ! command -v sdk &>/dev/null; then
-	echo "SDKMAN not able to be used. Please configure manually. Aborting..."
-else
 	for sdk in "${sdks[@]}"; do
 		echo "Installing sdk for $sdk"
 		sdk install "$sdk"
 	done
-fi
 
 echo "Installation Complete!"

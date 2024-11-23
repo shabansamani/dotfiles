@@ -35,36 +35,36 @@ formulae=(
 
 # Define an array of packages to install using Homebrew
 packages=(
-	"bat",
-	"borders",
-	"fish",
-	"fd",
-	"fzf",
-	"gh",
-	"git",
-	"lazygit",
-	"lua",
-	"luajit",
-	"luarocks",
-	"maven",
-	"mongodb-community",
-	"mongodb-database-tools",
-	"mongosh",
-	"mysql",
-	"ncurses",
-	"neofetch",
-	"neovim",
-	"nowplaying-cli",
-	"pyenv",
+	"bat"
+	"borders"
+	"fish"
+	"fd"
+	"fzf"
+	"gh"
+	"git"
+	"lazygit"
+	"lua"
+	"luajit"
+	"luarocks"
+	"maven"
+	"mongodb-community"
+	"mongodb-database-tools"
+	"mongosh"
+	"mysql"
+	"ncurses"
+	"neofetch"
+	"neovim"
+	"nowplaying-cli"
+	"pyenv"
 	"pyenv-virtualenv"
-	"readline",
-	"ripgrep",
-	"sketchybar",
-	"starship",
+	"readline"
+	"ripgrep"
+	"sketchybar"
+	"starship"
 	"stow"
-	"tree",
-	"tree-sitter",
-	"wget",
+	"tree"
+	"tree-sitter"
+	"wget"
 	"yazi"
 )
 
@@ -106,19 +106,19 @@ else
 fi
 
 apps=(
-	"aerospace",
-	"cheatsheet",
-	"discord",
+	"aerospace"
+	"cheatsheet"
+	"discord"
 	"docker",
-	"google-chrome",
-	# "ghostty",
-	"obsidian",
-	"slack",
-	"visual-studio-code",
-	"zoom",
-	"google-drive",
-	"vlc",
-	"insomnia",
+	"google-chrome"
+	# "ghostty"
+	"obsidian"
+	"slack"
+	"visual-studio-code"
+	"zoom"
+	"google-drive"
+	"vlc"
+	"insomnia"
 	"wezterm"
 )
 
@@ -136,20 +136,20 @@ done
 # cask-fonts has been deprecated. All fonts have been transitioned to homebrew-cask
 
 fonts=(
-	"font-hack-nerd-font",
-	"font-sf-mono",
-	"font-sf-pro",
-	"sf-symbols",
-	"font-jetbrains-mono-nerd-font",
-	"font-source-code-pro",
-	"font-lato",
-	"font-montserrat",
-	"font-nunito",
-	"font-open-sans",
-	"font-oswald",
-	"font-poppins",
-	"font-raleway",
-	"font-roboto",
+	"font-hack-nerd-font"
+	"font-sf-mono"
+	"font-sf-pro"
+	"sf-symbols"
+	"font-jetbrains-mono-nerd-font"
+	"font-source-code-pro"
+	"font-lato"
+	"font-montserrat"
+	"font-nunito"
+	"font-open-sans"
+	"font-oswald"
+	"font-poppins"
+	"font-raleway"
+	"font-roboto"
 )
 
 for font in "${fonts[@]}"; do
