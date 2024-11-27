@@ -1,13 +1,15 @@
 #!/bin/zsh
 
 dots=(
-	"aerospace",
-	"nvim",
-	"sketchybar",
-	"neofetch",
-	"wezterm",
-	"starship",
+	"aerospace"
+	"nvim"
+	"sketchybar"
+	"neofetch"
+	"wezterm"
+	"starship"
 	"borders"
+  "yazi"
+  "lazygit"
 )
 
 for dot in "${dots[@]}"; do
