@@ -5,7 +5,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- This is where you actually apply your config
-config.color_scheme = "Kanagawa (Gogh)"
+config.color_scheme = "kanagawabones"
 config.font = wezterm.font("JetBrains Mono")
 config.font_size = 14
 config.hide_tab_bar_if_only_one_tab = false
@@ -13,7 +13,7 @@ config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.tab_and_split_indices_are_zero_based = true
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.97
 config.automatically_reload_config = true
 config.unix_domains = { { name = "unix" } }
 config.default_gui_startup_args = { "connect", "unix" }
@@ -105,6 +105,15 @@ for i = 0, 9 do
 		key = tostring(i),
 		mods = "LEADER",
 		action = wezterm.action.ActivateTab(i),
+	})
+end
+
+for i = 1, 8 do
+	-- CTRL+ALT + number to move to that position
+	table.insert(config.keys, {
+		key = tostring(i),
+		mods = "CTRL|ALT",
+		action = wezterm.action.MoveTab(i - 1),
 	})
 end
 
