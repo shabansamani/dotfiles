@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config
 config.color_scheme = "kanagawabones"
-config.font = wezterm.font("JetBrains Mono")
+config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 14
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
