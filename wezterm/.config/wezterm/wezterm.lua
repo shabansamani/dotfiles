@@ -13,7 +13,7 @@ config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.tab_and_split_indices_are_zero_based = true
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.97
+config.window_background_opacity = 0.95
 config.automatically_reload_config = true
 config.unix_domains = { { name = "unix" } }
 config.default_gui_startup_args = { "connect", "unix" }
