@@ -150,7 +150,7 @@ alt-shift-semicolon = 'mode service'
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 
 # disabled hide window
-# cmd-h = []
+cmd-h = []
 # rotate hangul and english
 
 [mode.service.binding]
@@ -176,7 +176,8 @@ alt-shift-r = ['exec-and-forget /opt/homebrew/bin/sketchybar --reload']
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run = ['move-node-to-workspace 5']
+# run = ['move-node-to-workspace 5']
+run = ['layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.weather'
@@ -192,7 +193,8 @@ run = ['layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
-run = ['move-node-to-workspace 5']
+# run = ['move-node-to-workspace 5']
+run = ['layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Notes'
@@ -211,6 +213,10 @@ if.app-id = 'com.github.wez.wezterm'
 run = ['move-node-to-workspace 2']
 
 [[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
 if.app-id = 'com.Microsoft.VSCode'
 run = ['move-node-to-workspace 3']
 
@@ -225,3 +231,7 @@ run = ['move-node-to-workspace 6']
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = ['move-node-to-workspace 7']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.reminders'
+run = ['layout floating']
