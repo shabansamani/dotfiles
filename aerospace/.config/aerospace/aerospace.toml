@@ -201,7 +201,7 @@ if.app-id = 'com.apple.Notes'
 run = ['layout floating']
 
 [[on-window-detected]]
-if.app-id = 'md.Obsidian'
+if.app-id = 'md.obsidian'
 run = ['layout floating']
 
 [[on-window-detected]]
@@ -234,4 +234,12 @@ run = ['move-node-to-workspace 7']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.reminders'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'org.jkiss.dbeaver.core.product'
+run = ['move-node-to-workspace 4']
+
+[[on-window-detected]]
+if.app-id = 'com.TickTick.task.mac'
 run = ['layout floating']
