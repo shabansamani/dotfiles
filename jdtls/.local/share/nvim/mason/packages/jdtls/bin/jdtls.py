@@ -34,21 +34,28 @@ def get_java_executable(known_args):
 	if not known_args.validate_java_version:
 		return java_executable
 
+	java_major_version = get_java_major_version(java_executable)
+
+	if java_major_version < 21:
+		raise Exception("jdtls requires at least Java 21")
+
+	return java_executable
+
+def get_java_major_version (java_executable):
 	out = subprocess.check_output([java_executable, '-version'], stderr = subprocess.STDOUT, universal_newlines=True)
 
 	matches = re.finditer(r"(?<=version\s\")(?P<major>\d+)(\.\d+\.\d+(_\d+)?)?", out)
 	for match in matches:
-		java_major_version = int(match.group("major"))
-
-		if java_major_version < 17:
-			raise Exception("jdtls requires at least Java 17")
-
-		return java_executable
+		return int(match.group("major"))
 
 	raise Exception("Could not determine Java version")
 
 def find_equinox_launcher(jdtls_base_directory):
 	plugins_dir = jdtls_base_directory / "plugins"
+	if (plugins_dir / 'org.eclipse.equinox.launcher.jar').is_file():
+		# mason-registry packaging
+		return str(plugins_dir / 'org.eclipse.equinox.launcher.jar')
+
 	launchers = plugins_dir.glob('org.eclipse.equinox.launcher_*.jar')
 	for launcher in launchers:
 		return str(plugins_dir / launcher)
@@ -59,6 +66,9 @@ def get_shared_config_path(jdtls_base_path):
 	system = platform.system()
 
 	if system in ['Linux', 'FreeBSD']:
+		config_dir = 'config_linux'
+	# or use system == 'Android'
+	elif 'TERMUX_VERSION' in os.environ:
 		config_dir = 'config_linux'
 	elif system == 'Darwin':
 		config_dir = 'config_mac'
@@ -71,7 +81,22 @@ def get_shared_config_path(jdtls_base_path):
 
 def main(args):
 	cwd_name = os.path.basename(os.getcwd())
-	jdtls_data_path = os.path.join(tempfile.gettempdir(), "jdtls-" + sha1(cwd_name.encode()).hexdigest())
+
+	system = platform.system()
+
+	if system == 'Windows' and 'APPDATA' in os.environ:
+		cachedir = Path(os.environ['APPDATA'])
+	elif system == 'Darwin' and 'HOME' in os.environ:
+		cachedir = Path(os.environ['HOME']) / 'Library' / 'Caches'
+	elif system == 'Linux' and 'HOME' in os.environ:
+		cachedir = Path(os.environ['HOME']) / '.cache'
+	elif 'TERMUX_VERSION' in os.environ and 'HOME' in os.environ:
+		cachedir = Path(os.environ['HOME']) / '.cache'
+	else:
+		cachedir = Path(tempfile.gettempdir())
+
+	cachedir = cachedir / 'jdtls'
+	jdtls_data_path = os.path.join(cachedir, "jdtls-" + sha1(cwd_name.encode()).hexdigest())
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--validate-java-version', action='store_true', default=True)
@@ -85,12 +110,12 @@ def main(args):
 
 	known_args, args = parser.parse_known_args(args)
 	java_executable = get_java_executable(known_args)
+	java_major_version = get_java_major_version(java_executable)
 
 	jdtls_base_path = Path(__file__).parent.parent
 	shared_config_path = get_shared_config_path(jdtls_base_path)
 	jar_path = find_equinox_launcher(jdtls_base_path)
 
-	system = platform.system()
 	exec_args = ["-Declipse.application=org.eclipse.jdt.ls.core.id1",
 			"-Dosgi.bundles.defaultStartLevel=4",
 			"-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -106,6 +131,9 @@ def main(args):
 			+ ["-jar", jar_path,
 			"-data", known_args.data] \
 			+ args
+
+	if (java_major_version >= 24):
+		exec_args = [ '-Djdk.xml.maxGeneralEntitySizeLimit=0', '-Djdk.xml.totalEntitySizeLimit=0' ] + exec_args
 
 	if os.name == 'posix':
 		os.execvp(java_executable, exec_args)
