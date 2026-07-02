@@ -1,3 +1,13 @@
 theme = Kanagawa Wave
 macos-titlebar-style = hidden
 font-family = "JetBrainsMono Nerd Font Mono"
+
+# Native tabs are separate macOS windows under the hood, which breaks Aerospace's
+# tiling (each "tab" gets tiled as its own window). Use new_window + splits instead:
+# splits stay inside one window so Aerospace never sees them, and new windows tile
+# normally without needing a float/unfloat workaround.
+keybind = super+t=new_window
+
+# Auto-attach every new terminal to a persistent tmux session, so multiplexing
+# (panes/sessions that survive a restart) works with zero manual setup step.
+command = direct:/opt/homebrew/bin/tmux new-session -A -s main

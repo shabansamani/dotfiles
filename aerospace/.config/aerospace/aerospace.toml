@@ -213,6 +213,9 @@ if.app-id = 'com.github.wez.wezterm'
 run = ['move-node-to-workspace 2']
 
 [[on-window-detected]]
+# Ghostty no longer opens native tabs (remapped cmd+t to new_window), so every
+# detected window is a normal top-level window and can tile directly - no more
+# float-then-manually-untile step.
 if.app-id = 'com.mitchellh.ghostty'
 run = ['move-node-to-workspace 2']
 
@@ -243,3 +246,11 @@ run = ['move-node-to-workspace 4']
 [[on-window-detected]]
 if.app-id = 'com.TickTick.task.mac'
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = ['move-node-to-workspace 6']
